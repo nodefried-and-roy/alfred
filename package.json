@@ -9,9 +9,9 @@
   "bin": {
     "alfred": "./index.js"
   },
-  "author": "Alfred",
-  "license": "ISC",
-  "repository": "",
+  "author": "Nodefried and Roy",
+  "license": "MIT",
+  "repository": "https://github.com/nodefried-and-roy/alfred.git",
   "dependencies": {
     "ansi-256-colors": "^1.1.0",
     "asyncblock": "^2.2.12",

@@ -26,7 +26,7 @@ var ffmpeg = require('fluent-ffmpeg');
 
 
 // START: Config Value Variables
-bot_nickname = config.bot_nickname;
+bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
 // END: Config Value Variables
 
@@ -44,11 +44,11 @@ var colors = require('colors');
 
 // START: Write Operator Data
 function operatorSave() {
-	fs.writeFile("test", "Hey there!", function(err) {
+	fs.writeFile('/tmp/test', 'Hey there!', function(err) {
 		if(err) {
-	    		return console.log(err);
+	    		console.log(timeStampLog()+err);
 		}
-		console.log("The file was saved!");
+		console.log(timeStampLog()+'The file was saved!');
 	});
 }
 // END: Write Operator Data
