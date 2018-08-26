@@ -1,0 +1,22 @@
+{
+  "name": "Alfred",
+  "version": "1.0.0",
+  "description": "An all purpose bot.",
+  "entry point:": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "alfred": "./index.js"
+  },
+  "author": "Alfred",
+  "license": "ISC",
+  "repository": "",
+  "dependencies": {
+    "ansi-256-colors": "^1.1.0",
+    "express": "^4.16.3",
+    "g": "^2.0.1",
+    "node-datetime": "^2.0.9",
+    "prompt": "^1.0.0"
+  }
+}
