@@ -4,15 +4,15 @@ an all purpose node.js bot with built in console + prompt
 ## features
 - [x] interactive console
 - [x] pretty colors
-- [x] wWeb server
+- [x] web server
 - [x] crypto blockchain query
 - [x] crypto market query
 - [x] internet speed testing (on bot host)
 - [x] inet-utils (tracert, dig, ping, and more!)
-- [x] nmap support
-- [x] discord support
-- [x] irc support
-- [ ] email support
+- [x] nmap capable
+- [x] discord capable
+- [x] irc capable
+- [ ] email capable
 
 ## operation
 ### compatibility
