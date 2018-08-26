@@ -186,20 +186,33 @@ function webServer(action) {
 // START SECTION: RUNTIME
 //
 
+
 // START: Initial Prompt and Console
-prompt(timeStampLog()+'Please enter your name so I know what to call you? ', function (var_operator_name) {
-	operatorSave(var_operator_name);
-	prompt(timeStampLog()+'Hello, '+var_operator_name+' I am '+bot_nickname+'. Do you want to hear a joke? ', function (var_question_result) {
-		if (var_question_result.toUpperCase() == "YES" || var_question_result.toUpperCase() == "OK" || var_question_result.toUpperCase() == "SURE" ) {
-			prompt(timeStampLog()+'OH! What do you call a bot with no legs '+var_operator_name+'? ', function (var_joke_answer) {
-				console.log(timeStampLog()+"A Python bot! Haha! Get it? Because Python's don't have legs.");		
+if (fs.existsSync('operator')) {
+	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
+	let data = ''
+	readStream.on('data', function(chunk) {
+		data += chunk;
+	}).on('end', function() {
+		console.log(timeStampLog()+'Welcome back '+data+'!');
+		botConsole();
+	});
+} else {
+
+	prompt(timeStampLog()+'Please enter your name so I know what to call you? ', function (var_operator_name) {
+		operatorSave(var_operator_name);
+		prompt(timeStampLog()+'Hello, '+var_operator_name+' I am '+bot_nickname+'. Do you want to hear a joke? ', function (var_question_result) {
+			if (var_question_result.toUpperCase() == "YES" || var_question_result.toUpperCase() == "OK" || var_question_result.toUpperCase() == "SURE" ) {
+				prompt(timeStampLog()+'OH! What do you call a bot with no legs '+var_operator_name+'? ', function (var_joke_answer) {
+					console.log(timeStampLog()+"A Python bot! Haha! Get it? Because Python's don't have legs.");		
+					botConsole();
+				});
+			} else {
 				botConsole();
-			});
-		} else {
-			botConsole();
-		}
-	})
-});
+			}
+		})
+	});
+}
 // END: Initial Prompt and Console
 
 //
