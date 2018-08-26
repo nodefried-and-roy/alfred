@@ -74,8 +74,9 @@ function ping(host) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
 	function puts(error, stdout, stderr) { 
-		console.log(timeStampLog()+'Results Below:');
+		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
 		console.log(stdout);
+		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
 		botConsole();
 	}
 	if (systemOS === "win32") {
@@ -85,6 +86,24 @@ function ping(host) {
 	}
 };
 // END: Ping
+
+// START: System Shell
+function shell(command) {
+	var sys = require('util');
+	var exec = require('child_process').exec;
+	function puts(error, stdout, stderr) { 
+		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
+		console.log(stdout);
+		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
+		botConsole();
+	}
+	if (systemOS === "win32") {
+		exec(command, puts);
+	} else {		
+		exec(command, puts);
+	}
+};
+// END: Sytem Shell
 
 // START: Prompt
 function prompt(question, callback) {
@@ -113,8 +132,7 @@ function botConsole() {
 		if(arguments[0].toUpperCase() == "EXIT") {
 				console.log(timeStampLog()+'Exiting back to console...');
 				process.exit();
-		} 
-		if(arguments[0].toUpperCase() == "WEB") {
+		} else if(arguments[0].toUpperCase() == "WEB") {
 			if(arguments[2].toUpperCase() == "START") {
 				console.log(timeStampLog()+'Starting the web server...');
 				webServer('start');
@@ -122,15 +140,14 @@ function botConsole() {
 				console.log(timeStampLog()+'Stopping the web server...');
 				webServer('stop');
 			}
-		} 
-		if(arguments[0].toUpperCase() == "PING") {
-				console.log(timeStampLog()+'Pinging host, please wait...');
-				let host = arguments[2];
-				ping(host);
-		}
-		if(!arguments[0]) {
-				console.log(timeStampLog()+'Not a recognized command...');
-				botConsole();
+		} else if(arguments[0].toUpperCase() == "PING") {
+			console.log(timeStampLog()+'Pinging host, please wait...');
+			let host = arguments[2];
+			ping(host);
+		} else {
+			//console.log(timeStampLog()+'Not a recognized command...');
+			shell(botCommand);
+			//botConsole();
 		}
 	})
 }
