@@ -10,6 +10,9 @@ an all purpose node.js bot with built in console + prompt
 - [x] internet speed testing (on bot host)
 - [x] inet-utils (tracert, dig, ping, and more!)
 - [x] nmap support
+- [x] discord support
+- [x] irc support
+- [ ] email support
 
 ## operation
 ### compatibility
