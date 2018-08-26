@@ -1,8 +1,13 @@
 # alfred
 an all purpose node.js bot
 
-## installation
+### installation
 1) `git clone https://github.com/nodefried-and-roy/alfred.git`
 2) `cd alfred; npm install;`
 3) `node alfred.js`
-4) profit
+
+### notes
+none to date
+
+### compatibility
+windows, osx, linux
