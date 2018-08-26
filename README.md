@@ -24,7 +24,7 @@ python 2.7, node.js 8+, npm
 ### installation
 1) `git clone https://github.com/nodefried-and-roy/alfred.git`
 2) `cd alfred; npm install -g`
-3) `node alfred.js`
+3) `node alfred.js` or just `alfred` (all OS's)
 
 ## notes
 none to date
