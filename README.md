@@ -13,6 +13,8 @@ an all purpose node.js bot with built in console + prompt
 - [x] discord capable
 - [x] irc capable
 - [ ] email capable
+- [x] auto-updating
+- [ ] invite-able (promiscuous)
 
 ## operation
 ### compatibility
