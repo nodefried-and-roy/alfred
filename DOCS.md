@@ -4,7 +4,6 @@
 
 ### Constants
 ```js
-
 const config = require('./config.json');
 const os = require('os');
 const fs = require('fs');
@@ -15,10 +14,8 @@ const http = require("http");
 ```js
 
 
-
 ### Other Variables
 ```js
-
 var sys = require('util');
 var exec = require('child_process').exec;
 var cluster = require('cluster');
@@ -30,14 +27,11 @@ var colors = require('colors');
 ```js
 
 
-
 ### Config Value Variables
 ```js
-
 bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
 ```js
-
 
 
 
@@ -46,7 +40,6 @@ bot_web_port = config.bot_web_port;
 
 ### Write Operator Data
 ```js
-
 function operatorSave(operator) {
 	fs.writeFile('operator', operator, function(err) {
 	});
@@ -55,10 +48,8 @@ function operatorSave(operator) {
 ```js
 
 
-
 ### Timestamp Log
 ```js
-
 function timeStampLog() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
@@ -67,10 +58,8 @@ function timeStampLog() {
 ```js
 
 
-
 ### Timestamp Normal
 ```js
-
 function timeStamp() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
@@ -79,10 +68,8 @@ function timeStamp() {
 ```js
 
 
-
 ### Ping
 ```js
-
 function ping(host) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -99,12 +86,10 @@ function ping(host) {
 ```js
 
 
-
 ### System Shell
 Super, super dangerous. You have been warned.
 But just in case, it's disabled by default.
 ```js
-
 function shell(command) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -121,10 +106,8 @@ function shell(command) {
 ```js
 
 
-
 ### Prompt
 ```js
-
 function prompt(question, callback) {
 	var stdin = process.stdin,
 	stdout = process.stdout;
@@ -139,20 +122,16 @@ function prompt(question, callback) {
 ```js
 
 
-
 ### Console Prompt
 ```js
-
 function botConsolePrompt() {
 	return bot_nickname.toLowerCase().yellow+'@localhost'.yellow+' ##_\ '.trap.bold.cyan;
 }
 ```js
 
 
-
 ### Console
 ```js
-
 function botConsole() {
 	prompt(timeStampLog()+botConsolePrompt(), function(botCommand) {
 		var arguments = botCommand.split(/(\s+)/);
@@ -183,10 +162,8 @@ function botConsole() {
 ```js
 
 
-
 ### Web Server
 ```js
-
 function webServer(action) {
 	const web = express();
 	if (action.toUpperCase() == "START") {
@@ -213,10 +190,8 @@ function webServer(action) {
 ```js
 
 
-
 ### Documentation Generator
 ```js
-
 function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
 	fs.readFile('alfred.js', 'utf8', function (err,data) {
@@ -236,9 +211,8 @@ function generateDocumentation() {
 				'')
 			.replace(/\/\/ COMMENT: /g,
 				'')
-			.replace(/\/\```js
-g,
-				'```js\n');
+			.replace(/\/\```jsg,
+				'```js');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
@@ -251,14 +225,12 @@ g,
 
 
 
-
 ## RUNTIME
 
 ### Initial Prompt and Console
 You must adhere to the comment policy in order for the documentation function to work.
 It's a pain in the ass but it works.
 ```js
-
 if (fs.existsSync('operator')) {
 	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
 	let data = ''
@@ -277,7 +249,6 @@ if (fs.existsSync('operator')) {
 	});
 }
 ```js
-
 
 
 
