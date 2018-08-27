@@ -1,31 +1,31 @@
-## description
-an all purpose node.js bot with built in console + prompt
+## Description
+An all purpose Node.js bot with built with console + prompt + misc other things.
 
-## features
-- [x] interactive console
-- [x] pretty colors
-- [x] web server
-- [x] crypto blockchain query
-- [x] crypto market query
-- [x] internet speed testing (on bot host)
-- [x] inet-utils (tracert, dig, ping, and more!)
-- [x] nmap capable
-- [x] discord capable
-- [x] irc capable
-- [ ] email capable
-- [x] auto-updating
-- [ ] invite-able (promiscuous)
+## Features
+- [x] Interactive Console
+- [x] Pretty Colors
+- [x] Web Server
+- [x] Crypto Utilities / Queries
+- [x] Internet Speed Test (on bot host)
+- [x] Inet-utils (tracert, dig, ping, and more!)
+- [x] NMAP Capable
+- [x] Discord Capable
+- [x] IRC Capable
+- [ ] Email Capable
+- [x] Auto-updating
+- [ ] Invite-able (promiscuous)
+- [x] Auto-generates Documentation (Kinda)
 
-## operation
-### compatibility
-windows, osx, linux
-### requirements
-python 2.7, node.js 8+, npm
-### installation
+## Operation
+### Compatibility
+Windows, osX, Linux
+### Requirements
+Python 2.7, Node.js 8+, NPM
+### Installation
 1) `git clone https://github.com/nodefried-and-roy/alfred.git`
 2) `cd alfred; npm install -g`
 3) `node alfred.js` or just `alfred` (all OS's)
 
-## documentation
-the documentation is [auto-generated](../master/DOCS.md)
+## Documentation
+The documentation is [auto-generated](../master/DOCS.md).
 
