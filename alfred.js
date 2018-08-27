@@ -212,7 +212,7 @@ function generateDocumentation() {
 			.replace(/\/\/ COMMENT: /g,
 				'')
 			.replace(/\/\//g,
-				'```');
+				'```js\n');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
