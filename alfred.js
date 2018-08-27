@@ -209,11 +209,13 @@ function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
 	fs.readFile('alfred.js', 'utf8', function (err,data) {
 		if (err) {
-		return console.log(timeStampLog()+err);
+			return console.log(timeStampLog()+err);
 		}
-		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '## ').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '### ').replace(/\/\/ END SUB: (.+)/g, '');
-		var result2 = result.replace(/\/\/ COMMENT: /g,'> ').replace(/\/\//g, '```');
-		fs.writeFile('DOCS.md', result2, 'utf8', function (err) {
+		var result1 = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '## ');
+		var result2 = result1.replace(/\/\/ END SECTION: (.+)/g, '');
+		var result3 = result2.replace(/\/\/ START SUB: /g, '### ').replace(/\/\/ END SUB: (.+)/g, '');
+		var result = result3.replace(/\/\/ COMMENT: /g,'> ').replace(/\/\//g, '```');
+		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
 	});
@@ -241,18 +243,10 @@ if (fs.existsSync('operator')) {
 	});
 } else {
 
-	prompt(timeStampLog()+'Please enter your name so I know what to call you? ', function (var_operator_name) {
+	prompt(timeStampLog()+'What is my operators name? ', function (var_operator_name) {
 		operatorSave(var_operator_name);
-		prompt(timeStampLog()+'Hello, '+var_operator_name+' I am '+bot_nickname+'. Do you want to hear a joke? ', function (var_question_result) {
-			if (var_question_result.toUpperCase() == "YES" || var_question_result.toUpperCase() == "OK" || var_question_result.toUpperCase() == "SURE" ) {
-				prompt(timeStampLog()+'OH! What do you call a bot with no legs '+var_operator_name+'? ', function (var_joke_answer) {
-					console.log(timeStampLog()+"A Python bot! Haha! Get it? Because Python's don't have legs.");		
-					botConsole();
-				});
-			} else {
-				botConsole();
-			}
-		})
+		console.log(timeStampLog()+'Hello '+var_operator_name+', I am '+bot_nickname+'.');
+		botConsole();
 	});
 }
 //
