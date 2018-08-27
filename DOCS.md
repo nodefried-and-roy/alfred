@@ -11,7 +11,7 @@ const path = require('path');
 const express = require('express');
 const request = require("request");
 const http = require("http");
-```js
+```
 
 
 ### Other Variables
@@ -24,14 +24,14 @@ var prettySize = require('prettysize');
 var prettyMs = require('pretty-ms');
 var ffmpeg = require('fluent-ffmpeg');
 var colors = require('colors');
-```js
+```
 
 
 ### Config Value Variables
 ```js
 bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
-```js
+```
 
 
 
@@ -45,7 +45,7 @@ function operatorSave(operator) {
 	});
 	console.log(timeStampLog()+'Wrote operator name and DNA to record...'.gray);
 }
-```js
+```
 
 
 ### Timestamp Log
@@ -55,7 +55,7 @@ function timeStampLog() {
 	var dt = dateTime.create();
 	return dt.format('Y-m-d H:M:S').bold.green+'| ';
 }
-```js
+```
 
 
 ### Timestamp Normal
@@ -65,7 +65,7 @@ function timeStamp() {
 	var dt = dateTime.create();
 	return dt.format('Y-m-d H:M:S');
 }
-```js
+```
 
 
 ### Ping
@@ -83,7 +83,7 @@ function ping(host) {
 		exec("ping -c 5 "+host, puts);
 	}
 }
-```js
+```
 
 
 ### System Shell
@@ -103,7 +103,7 @@ function shell(command) {
 		exec(command, puts);
 	}
 }
-```js
+```
 
 
 ### Prompt
@@ -119,7 +119,7 @@ function prompt(question, callback) {
 		callback(data.toString().trim());
 	});
 }
-```js
+```
 
 
 ### Console Prompt
@@ -127,7 +127,7 @@ function prompt(question, callback) {
 function botConsolePrompt() {
 	return bot_nickname.toLowerCase().yellow+'@localhost'.yellow+' ##_\ '.trap.bold.cyan;
 }
-```js
+```
 
 
 ### Console
@@ -159,7 +159,7 @@ function botConsole() {
 		}
 	})
 }
-```js
+```
 
 
 ### Web Server
@@ -187,7 +187,7 @@ function webServer(action) {
 		})
 	}
 }
-```js
+```
 
 
 ### Documentation Generator
@@ -211,8 +211,10 @@ function generateDocumentation() {
 				'')
 			.replace(/\/\/ COMMENT: /g,
 				'')
-			.replace(/\/\```jsg,
-				'```js');
+			.replace(/\/\* START \*\//g,
+				'```js')
+			.replace(/\/\* END \*\//g,
+				'```');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
@@ -220,7 +222,7 @@ function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation done!'.bold.green);
 	botConsole();
 }
-```js
+```
 
 
 
@@ -248,7 +250,7 @@ if (fs.existsSync('operator')) {
 		botConsole();
 	});
 }
-```js
+```
 
 
 

@@ -3,7 +3,7 @@
 // START SECTION: SYSTEM
 
 // START SUB: Constants
-//
+/* START */
 const config = require('./config.json');
 const os = require('os');
 const fs = require('fs');
@@ -11,11 +11,11 @@ const path = require('path');
 const express = require('express');
 const request = require("request");
 const http = require("http");
-//
+/* END */
 // END SUB: Constants
 
 // START SUB: Other Variables
-//
+/* START */
 var sys = require('util');
 var exec = require('child_process').exec;
 var cluster = require('cluster');
@@ -24,14 +24,14 @@ var prettySize = require('prettysize');
 var prettyMs = require('pretty-ms');
 var ffmpeg = require('fluent-ffmpeg');
 var colors = require('colors');
-//
+/* END */
 // END SUB: Other Variables
 
 // START SUB: Config Value Variables
-//
+/* START */
 bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
-//
+/* END */
 // END SUB: Config Value Variables
 
 // END SECTION: SYSTEM
@@ -39,37 +39,37 @@ bot_web_port = config.bot_web_port;
 // START SECTION: FUNCTIONS
 
 // START SUB: Write Operator Data
-//
+/* START */
 function operatorSave(operator) {
 	fs.writeFile('operator', operator, function(err) {
 	});
 	console.log(timeStampLog()+'Wrote operator name and DNA to record...'.gray);
 }
-//
+/* END */
 // END SUB: Write Operator Data
 
 // START SUB: Timestamp Log
-//
+/* START */
 function timeStampLog() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
 	return dt.format('Y-m-d H:M:S').bold.green+'| ';
 }
-//
+/* END */
 // END SUB: Timestamp Log
 
 // START SUB: Timestamp Normal
-//
+/* START */
 function timeStamp() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
 	return dt.format('Y-m-d H:M:S');
 }
-//
+/* END */
 // END SUB: Timestamp Normal
 
 // START SUB: Ping
-//
+/* START */
 function ping(host) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -83,13 +83,13 @@ function ping(host) {
 		exec("ping -c 5 "+host, puts);
 	}
 }
-//
+/* END */
 // END SUB: Ping
 
 // START SUB: System Shell
 // COMMENT: Super, super dangerous. You have been warned.
 // COMMENT: But just in case, it's disabled by default.
-//
+/* START */
 function shell(command) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -103,11 +103,11 @@ function shell(command) {
 		exec(command, puts);
 	}
 }
-//
+/* END */
 // END SUB: Sytem Shell
 
 // START SUB: Prompt
-//
+/* START */
 function prompt(question, callback) {
 	var stdin = process.stdin,
 	stdout = process.stdout;
@@ -119,19 +119,19 @@ function prompt(question, callback) {
 		callback(data.toString().trim());
 	});
 }
-//
+/* END */
 // END SUB: Prompt
 
 // START SUB: Console Prompt
-//
+/* START */
 function botConsolePrompt() {
 	return bot_nickname.toLowerCase().yellow+'@localhost'.yellow+' ##_\ '.trap.bold.cyan;
 }
-//
+/* END */
 // END SUB: Console Prompt
 
 // START SUB: Console
-//
+/* START */
 function botConsole() {
 	prompt(timeStampLog()+botConsolePrompt(), function(botCommand) {
 		var arguments = botCommand.split(/(\s+)/);
@@ -159,11 +159,11 @@ function botConsole() {
 		}
 	})
 }
-//
+/* END */
 // END SUB: Console
 
 // START SUB: Web Server
-//
+/* START */
 function webServer(action) {
 	const web = express();
 	if (action.toUpperCase() == "START") {
@@ -187,11 +187,11 @@ function webServer(action) {
 		})
 	}
 }
-//
+/* END */
 // END SUB: Web Server
 
 // START SUB: Documentation Generator
-//
+/* START */
 function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
 	fs.readFile('alfred.js', 'utf8', function (err,data) {
@@ -211,8 +211,10 @@ function generateDocumentation() {
 				'')
 			.replace(/\/\/ COMMENT: /g,
 				'')
-			.replace(/\/\//g,
-				'```js');
+			.replace(/\/\* START \*\//g,
+				'```js')
+			.replace(/\/\* END \*\//g,
+				'```');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
@@ -220,7 +222,7 @@ function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation done!'.bold.green);
 	botConsole();
 }
-//
+/* END */
 // END SUB: Main Generator
 
 // END SECTION: FUNCTIONS
@@ -230,7 +232,7 @@ function generateDocumentation() {
 // START SUB: Initial Prompt and Console
 // COMMENT: You must adhere to the comment policy in order for the documentation function to work.
 // COMMENT: It's a pain in the ass but it works.
-//
+/* START */
 if (fs.existsSync('operator')) {
 	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
 	let data = ''
@@ -248,7 +250,7 @@ if (fs.existsSync('operator')) {
 		botConsole();
 	});
 }
-//
+/* END */
 // END SUB: Initial Prompt and Console
 
 // END SECTION: RUNTIME
