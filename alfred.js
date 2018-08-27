@@ -158,9 +158,7 @@ function botConsole() {
 		} else if (arguments[0].toUpperCase() == "DOCS") {
 			generateDocumentation();
 		} else {
-			//console.log(timeStampLog()+'Not a recognized command...');
 			shell(botCommand);
-			//botConsole();
 		}
 	})
 }
