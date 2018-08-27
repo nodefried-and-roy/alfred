@@ -196,13 +196,20 @@ function generateDocumentation() {
 			return console.log(timeStampLog()+err);
 		}
 		var result = data
-			.replace(/#!\/usr\/bin\/env node/g, '# Welcome to the '+bot_nickname+' Documentation')
-			.replace(/\/\/ START SECTION: /g, '## ')
-			.replace(/\/\/ END SECTION: (.+)/g, '')
-			.replace(/\/\/ START SUB: /g, '### ')
-			.replace(/\/\/ END SUB: (.+)/g, '')
-			.replace(/\/\/ COMMENT: /g,'')
-			.replace(/\/\//g, '```');
+			.replace(/#!\/usr\/bin\/env node/g,
+				'# Welcome to the '+bot_nickname+' Documentation')
+			.replace(/\/\/ START SECTION: /g,
+				'## ')
+			.replace(/\/\/ END SECTION: (.+)/g,
+				'')
+			.replace(/\/\/ START SUB: /g,
+				'### ')
+			.replace(/\/\/ END SUB: (.+)/g,
+				'')
+			.replace(/\/\/ COMMENT: /g,
+				'')
+			.replace(/\/\//g,
+				'```');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
