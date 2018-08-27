@@ -111,6 +111,7 @@ function shell(command) {
 // END SUB: Sytem Shell
 
 // START SUB: Prompt
+// COMMENT: Super, super dangerous. You have been warned.
 //
 function prompt(question, callback) {
 	var stdin = process.stdin,

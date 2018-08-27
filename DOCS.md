@@ -80,9 +80,7 @@ function ping(host) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
 	function puts(error, stdout, stderr) { 
-		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
 		console.log(stdout);
-		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
 		botConsole();
 	}
 	if (systemOS === "win32") {
@@ -100,9 +98,7 @@ function shell(command) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
 	function puts(error, stdout, stderr) { 
-		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
 		console.log(stdout);
-		console.log(timeStampLog()+'-------------------------------------'.bold.blue);
 		botConsole();
 	}
 	if (systemOS === "win32") {
@@ -115,6 +111,7 @@ function shell(command) {
 
 
 ### Prompt
+Super, super dangerous. You have been warned.
 ```
 function prompt(question, callback) {
 	var stdin = process.stdin,
