@@ -93,6 +93,7 @@ function ping(host) {
 
 
 ### System Shell
+Super, super dangerous. You have been warned.
 ```
 function shell(command) {
 	var sys = require('util');
@@ -111,7 +112,6 @@ function shell(command) {
 
 
 ### Prompt
-Super, super dangerous. You have been warned.
 ```
 function prompt(question, callback) {
 	var stdin = process.stdin,
