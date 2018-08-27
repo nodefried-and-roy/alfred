@@ -23,9 +23,9 @@ var systemOS = os.platform();
 var prettySize = require('prettysize');
 var prettyMs = require('pretty-ms');
 var ffmpeg = require('fluent-ffmpeg');
+var colors = require('colors');
 //
 // END SUB: Other Variables
-
 
 // START SUB: Config Value Variables
 //
@@ -33,12 +33,6 @@ bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
 //
 // END SUB: Config Value Variables
-
-// START SUB: Color Variables
-//
-var colors = require('colors');
-//
-// END SUB: Color Variables
 
 // END SECTION: SYSTEM
 
@@ -201,7 +195,7 @@ function generateDocumentation() {
 		if (err) {
 			return console.log(timeStampLog()+err);
 		}
-		var result1 = data.replace(/#!\/usr\/bin\/env node/g, '');
+		var result1 = data.replace(/#!\/usr\/bin\/env node/g, '# Welcome to the '+bot_nickname+' Documentation');
 		var result2 = result1.replace(/\/\/ START SECTION: /g, '## ');
 		var result3 = result2.replace(/\/\/ END SECTION: (.+)/g, '');
 		var result4 = result3.replace(/\/\/ START SUB: /g, '### ');
@@ -217,7 +211,6 @@ function generateDocumentation() {
 }
 //
 // END SUB: Main Generator
-
 
 // END SECTION: FUNCTIONS
 
