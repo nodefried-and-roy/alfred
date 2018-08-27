@@ -185,7 +185,7 @@ function webServer(action) {
 		console.log(timeStampLog()+'Web server started successfully!'.green);
 		botConsole();
 	} else if(action.toUpperCase() == "STOP") {
-		var webBackendClose = 'http://localhost:'+bot_web_port+'/backend/close';
+		var webBackendClose = 'localhost:'+bot_web_port+'/backend/close';
 		request({
 			url: webBackendClose,
 			timeout: 5000
@@ -211,10 +211,8 @@ function generateDocumentation() {
 		if (err) {
 		return console.log(timeStampLog()+err);
 		}
-		// START SUB SUB: Actual Processing into Markup
 		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '## ').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '### ').replace(/\/\/ END SUB: (.+)/g, '');
 		var result2 = result.replace(/\/\/ COMMENT: /g,'> ').replace(/\/\//g, '```');
-		// END SUB SUB: Actual Processing into Markup
 		fs.writeFile('DOCS.md', result2, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
