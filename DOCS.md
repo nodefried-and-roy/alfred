@@ -211,10 +211,13 @@ function generateDocumentation() {
 		if (err) {
 			return console.log(timeStampLog()+err);
 		}
-		var result1 = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '## ');
-		var result2 = result1.replace(/\/\/ END SECTION: (.+)/g, '');
-		var result3 = result2.replace(/\/\/ START SUB: /g, '### ').replace(/\/\/ END SUB: (.+)/g, '');
-		var result = result3.replace(/\/\/ COMMENT: /g,'> ').replace(/\/\```g, '```');
+		var result1 = data.replace(/#!\/usr\/bin\/env node/g, '');
+		var result2 = result1.replace(/\/\/ START SECTION: /g, '## ');
+		var result3 = result2.replace(/\/\/ END SECTION: (.+)/g, '');
+		var result4 = result3.replace(/\/\/ START SUB: /g, '### ');
+		var result5 = result4.replace(/\/\/ END SUB: (.+)/g, '');
+		var result6 = result5.replace(/\/\/ COMMENT: /g,'> ');
+		var result = result6.replace(/\/\```g, '```');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
