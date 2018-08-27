@@ -198,7 +198,7 @@ function webServer(action) {
 ```
 
 
-### Main Generator
+### Documentation Generator
 ```
 function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
@@ -211,7 +211,7 @@ function generateDocumentation() {
 		var result3 = result2.replace(/\/\/ END SECTION: (.+)/g, '');
 		var result4 = result3.replace(/\/\/ START SUB: /g, '### ');
 		var result5 = result4.replace(/\/\/ END SUB: (.+)/g, '');
-		var result6 = result5.replace(/\/\/ COMMENT: /g,'> ');
+		var result6 = result5.replace(/\/\/ COMMENT: /g,'');
 		var result = result6.replace(/\/\```g, '```');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
@@ -229,7 +229,8 @@ function generateDocumentation() {
 ## RUNTIME
 
 ### Initial Prompt and Console
-> Testing comments...
+You must adhere to the comment policy in order for the documentation function to work.
+It's a pain in the ass but it works.
 ```
 if (fs.existsSync('operator')) {
 	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
