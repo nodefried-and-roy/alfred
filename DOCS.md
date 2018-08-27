@@ -1,8 +1,8 @@
 
 
-#SYSTEM
+# SYSTEM
 
-##Constants
+## Constants
 ```
 const config = require('./config.json');
 const os = require('os');
@@ -14,7 +14,7 @@ const http = require("http");
 ```
 
 
-##Other Variables
+## Other Variables
 ```
 var sys = require('util');
 var exec = require('child_process').exec;
@@ -27,14 +27,14 @@ var ffmpeg = require('fluent-ffmpeg');
 
 
 
-##Config Value Variables
+## Config Value Variables
 ```
 bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
 ```
 
 
-##Color Variables
+## Color Variables
 ```
 var colors = require('colors');
 ```
@@ -42,9 +42,9 @@ var colors = require('colors');
 
 
 
-#FUNCTIONS
+# FUNCTIONS
 
-##Write Operator Data
+## Write Operator Data
 ```
 function operatorSave(operator) {
 	fs.writeFile('operator', operator, function(err) {
@@ -54,7 +54,7 @@ function operatorSave(operator) {
 ```
 
 
-##Timestamp Log
+## Timestamp Log
 ```
 function timeStampLog() {
 	var dateTime = require('node-datetime');
@@ -64,7 +64,7 @@ function timeStampLog() {
 ```
 
 
-##Timestamp Normal
+## Timestamp Normal
 ```
 function timeStamp() {
 	var dateTime = require('node-datetime');
@@ -74,7 +74,7 @@ function timeStamp() {
 ```
 
 
-##Ping
+## Ping
 ```
 function ping(host) {
 	var sys = require('util');
@@ -94,7 +94,7 @@ function ping(host) {
 ```
 
 
-##System Shell
+## System Shell
 ```
 function shell(command) {
 	var sys = require('util');
@@ -114,7 +114,7 @@ function shell(command) {
 ```
 
 
-##Prompt
+## Prompt
 ```
 function prompt(question, callback) {
 	var stdin = process.stdin,
@@ -130,7 +130,7 @@ function prompt(question, callback) {
 ```
 
 
-##Console Prompt
+## Console Prompt
 ```
 function botConsolePrompt() {
 	return bot_nickname.toLowerCase().yellow+'@localhost'.yellow+' ##_\ '.trap.bold.cyan;
@@ -138,7 +138,7 @@ function botConsolePrompt() {
 ```
 
 
-##Console
+## Console
 ```
 function botConsole() {
 	prompt(timeStampLog()+botConsolePrompt(), function(botCommand) {
@@ -170,7 +170,7 @@ function botConsole() {
 ```
 
 
-##Web Server
+## Web Server
 ```
 function webServer(action) {
 	const web = express();
@@ -201,9 +201,9 @@ function webServer(action) {
 
 
 
-#DOCUMENTATION AUTOGEN
+# DOCUMENTATION AUTOGEN
 
-##Main Generator
+## Main Generator
 ```
 function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
@@ -212,8 +212,8 @@ function generateDocumentation() {
 		return console.log(timeStampLog()+err);
 		}
 		``` START SUB SUB: Actual Processing into Markup
-		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '#').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '##').replace(/\/\/ END SUB: (.+)/g, '');
-		var result2 = result.replace(/\/\```g, '```').replace(/\/\/ COMMENT: /g,'###');
+		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '# ').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '## ').replace(/\/\/ END SUB: (.+)/g, '');
+		var result2 = result.replace(/\/\```g, '```').replace(/\/\/ COMMENT: /g,'### ');
 		``` END SUB SUB: Actual Processing into Markup
 		fs.writeFile('DOCS.md', result2, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
@@ -227,9 +227,9 @@ function generateDocumentation() {
 
 
 
-#RUNTIME
+# RUNTIME
 
-##Initial Prompt and Console
+## Initial Prompt and Console
 ``` COMMENT: 
 ```
 if (fs.existsSync('operator')) {
