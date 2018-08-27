@@ -185,7 +185,7 @@ function webServer(action) {
 		console.log(timeStampLog()+'Web server started successfully!'.green);
 		botConsole();
 	} else if(action.toUpperCase() == "STOP") {
-		var webBackendClose = 'localhost:'+bot_web_port+'/backend/close';
+		var webBackendClose = 'http:\/\/localhost:'+bot_web_port+'/backend/close';
 		request({
 			url: webBackendClose,
 			timeout: 5000
