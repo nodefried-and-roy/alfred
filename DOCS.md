@@ -88,6 +88,7 @@ function ping(host) {
 
 ### System Shell
 Super, super dangerous. You have been warned.
+But just in case, it's disabled by default.
 ```
 function shell(command) {
 	var sys = require('util');
@@ -152,7 +153,9 @@ function botConsole() {
 		} else if (arguments[0].toUpperCase() == "DOCS") {
 			generateDocumentation();
 		} else {
-			shell(botCommand);
+			/*shell(botCommand);*/
+			console.log(timeStampLog()+'Not a command...');
+			botConsole();
 		}
 	})
 }
