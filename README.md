@@ -27,5 +27,5 @@ python 2.7, node.js 8+, npm
 3) `node alfred.js` or just `alfred` (all OS's)
 
 ## documentation
-the documentation is [auto-generated](../blob/master/DOCS.md)
+the documentation is [auto-generated](../master/DOCS.md)
 
