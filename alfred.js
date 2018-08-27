@@ -230,7 +230,7 @@ function generateDocumentation() {
 // START SECTION: RUNTIME
 
 // START SUB: Initial Prompt and Console
-// COMMENT: 
+// COMMENT: Testing comments...
 //
 if (fs.existsSync('operator')) {
 	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
