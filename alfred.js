@@ -212,8 +212,8 @@ function generateDocumentation() {
 		return console.log(timeStampLog()+err);
 		}
 		// START SUB SUB: Actual Processing into Markup
-		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '# ').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '## ').replace(/\/\/ END SUB: (.+)/g, '');
-		var result2 = result.replace(/\/\//g, '```').replace(/\/\/ COMMENT: /g,'### ');
+		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '## ').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '### ').replace(/\/\/ END SUB: (.+)/g, '');
+		var result2 = result.replace(/\/\//g, '```').replace(/\/\/ COMMENT: /g,'> ');
 		// END SUB SUB: Actual Processing into Markup
 		fs.writeFile('DOCS.md', result2, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
