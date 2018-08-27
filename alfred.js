@@ -198,11 +198,6 @@ function webServer(action) {
 //
 // END SUB: Web Server
 
-
-// END SECTION: FUNCTIONS
-
-// START SECTION: DOCUMENTATION AUTOGEN
-
 // START SUB: Main Generator
 //
 function generateDocumentation() {
@@ -228,7 +223,8 @@ function generateDocumentation() {
 //
 // END SUB: Main Generator
 
-// END SECTION: DOCUMENTATION AUTOGEN
+
+// END SECTION: FUNCTIONS
 
 // START SECTION: RUNTIME
 

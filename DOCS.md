@@ -198,11 +198,6 @@ function webServer(action) {
 ```
 
 
-
-
-
-## DOCUMENTATION AUTOGEN
-
 ### Main Generator
 ```
 function generateDocumentation() {
@@ -226,6 +221,7 @@ function generateDocumentation() {
 	botConsole();
 }
 ```
+
 
 
 
