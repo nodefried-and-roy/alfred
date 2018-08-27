@@ -195,7 +195,8 @@ function generateDocumentation() {
 		if (err) {
 			return console.log(timeStampLog()+err);
 		}
-		var result1 = data.replace(/#!\/usr\/bin\/env node/g, '# Welcome to the '+bot_nickname+' Documentation');
+		var result1 = data.replace(/#!\/usr\/bin\/env node/g, 
+			'# Welcome to the '+bot_nickname+' Documentation');
 		var result2 = result1.replace(/\/\/ START SECTION: /g, '## ');
 		var result3 = result2.replace(/\/\/ END SECTION: (.+)/g, '');
 		var result4 = result3.replace(/\/\/ START SUB: /g, '### ');
