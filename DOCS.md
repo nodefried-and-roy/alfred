@@ -1,8 +1,9 @@
 
 
-# SYSTEM
+#SYSTEM
 
-``` Constants
+##Constants
+```
 const config = require('./config.json');
 const os = require('os');
 const fs = require('fs');
@@ -12,7 +13,9 @@ const request = require("request");
 const http = require("http");
 ```
 
-``` Other Variables
+
+##Other Variables
+```
 var sys = require('util');
 var exec = require('child_process').exec;
 var cluster = require('cluster');
@@ -23,20 +26,26 @@ var ffmpeg = require('fluent-ffmpeg');
 ```
 
 
-``` Config Value Variables
+
+##Config Value Variables
+```
 bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
 ```
 
-``` Color Variables
+
+##Color Variables
+```
 var colors = require('colors');
 ```
 
 
 
-# FUNCTIONS
 
-``` Write Operator Data
+#FUNCTIONS
+
+##Write Operator Data
+```
 function operatorSave(operator) {
 	fs.writeFile('operator', operator, function(err) {
 	});
@@ -44,7 +53,9 @@ function operatorSave(operator) {
 }
 ```
 
-``` Timestamp Log
+
+##Timestamp Log
+```
 function timeStampLog() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
@@ -52,7 +63,9 @@ function timeStampLog() {
 }
 ```
 
-``` Timestamp Normal
+
+##Timestamp Normal
+```
 function timeStamp() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
@@ -60,7 +73,9 @@ function timeStamp() {
 }
 ```
 
-``` Ping
+
+##Ping
+```
 function ping(host) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -78,7 +93,9 @@ function ping(host) {
 };
 ```
 
-``` System Shell
+
+##System Shell
+```
 function shell(command) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -96,7 +113,9 @@ function shell(command) {
 };
 ```
 
-``` Prompt
+
+##Prompt
+```
 function prompt(question, callback) {
 	var stdin = process.stdin,
 	stdout = process.stdout;
@@ -110,13 +129,17 @@ function prompt(question, callback) {
 }
 ```
 
-``` Console Prompt
+
+##Console Prompt
+```
 function botConsolePrompt() {
 	return bot_nickname.toLowerCase().yellow+'@localhost'.yellow+' ##_\ '.trap.bold.cyan;
 }
 ```
 
-``` Console
+
+##Console
+```
 function botConsole() {
 	prompt(timeStampLog()+botConsolePrompt(), function(botCommand) {
 		var arguments = botCommand.split(/(\s+)/);
@@ -138,15 +161,17 @@ function botConsole() {
 		} else if (arguments[0].toUpperCase() == "DOCS") {
 			generateDocumentation();
 		} else {
-			//console.log(timeStampLog()+'Not a recognized command...');
+			```console.log(timeStampLog()+'Not a recognized command...');
 			shell(botCommand);
-			//botConsole();
+			```botConsole();
 		}
 	})
 }
 ```
 
-``` Web Server
+
+##Web Server
+```
 function webServer(action) {
 	const web = express();
 	if (action.toUpperCase() == "START") {
@@ -160,7 +185,7 @@ function webServer(action) {
 		console.log(timeStampLog()+'Web server started successfully!'.green);
 		botConsole();
 	} else if(action.toUpperCase() == "STOP") {
-		var webBackendClose = 'http://localhost:'+bot_web_port+'/backend/close';
+		var webBackendClose = 'http:```localhost:'+bot_web_port+'/backend/close';
 		request({
 			url: webBackendClose,
 			timeout: 5000
@@ -175,19 +200,22 @@ function webServer(action) {
 
 
 
-# DOCUMENTATION AUTOGEN
 
-``` Main Generator
+#DOCUMENTATION AUTOGEN
+
+##Main Generator
+```
 function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
 	fs.readFile('alfred.js', 'utf8', function (err,data) {
 		if (err) {
 		return console.log(timeStampLog()+err);
 		}
-		// START SUB SUB: Actual Processing into Markup
-		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION:/g, '#').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB:/g, '```').replace(/\/\/ END SUB: (.+)/g, '```');
-		// END SUB SUB: Actual Processing into Markup
-		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
+		``` START SUB SUB: Actual Processing into Markup
+		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '#').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '##').replace(/\/\/ END SUB: (.+)/g, '');
+		var result2 = result.replace(/\/\```g, '```').replace(/\/\/ COMMENT: /g,'###');
+		``` END SUB SUB: Actual Processing into Markup
+		fs.writeFile('DOCS.md', result2, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
 	});
@@ -198,9 +226,12 @@ function generateDocumentation() {
 
 
 
-# RUNTIME
 
-``` Initial Prompt and Console
+#RUNTIME
+
+##Initial Prompt and Console
+``` COMMENT: 
+```
 if (fs.existsSync('operator')) {
 	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
 	let data = ''
@@ -227,5 +258,6 @@ if (fs.existsSync('operator')) {
 	});
 }
 ```
+
 
 

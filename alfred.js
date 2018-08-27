@@ -3,6 +3,7 @@
 // START SECTION: SYSTEM
 
 // START SUB: Constants
+//
 const config = require('./config.json');
 const os = require('os');
 const fs = require('fs');
@@ -10,9 +11,11 @@ const path = require('path');
 const express = require('express');
 const request = require("request");
 const http = require("http");
+//
 // END SUB: Constants
 
 // START SUB: Other Variables
+//
 var sys = require('util');
 var exec = require('child_process').exec;
 var cluster = require('cluster');
@@ -20,16 +23,21 @@ var systemOS = os.platform();
 var prettySize = require('prettysize');
 var prettyMs = require('pretty-ms');
 var ffmpeg = require('fluent-ffmpeg');
+//
 // END SUB: Other Variables
 
 
 // START SUB: Config Value Variables
+//
 bot_nickname = "Alfred";
 bot_web_port = config.bot_web_port;
+//
 // END SUB: Config Value Variables
 
 // START SUB: Color Variables
+//
 var colors = require('colors');
+//
 // END SUB: Color Variables
 
 // END SECTION: SYSTEM
@@ -37,30 +45,37 @@ var colors = require('colors');
 // START SECTION: FUNCTIONS
 
 // START SUB: Write Operator Data
+//
 function operatorSave(operator) {
 	fs.writeFile('operator', operator, function(err) {
 	});
 	console.log(timeStampLog()+'Wrote operator name and DNA to record...'.gray);
 }
+//
 // END SUB: Write Operator Data
 
 // START SUB: Timestamp Log
+//
 function timeStampLog() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
 	return dt.format('Y-m-d H:M:S').bold.green+'| ';
 }
+//
 // END SUB: Timestamp Log
 
 // START SUB: Timestamp Normal
+//
 function timeStamp() {
 	var dateTime = require('node-datetime');
 	var dt = dateTime.create();
 	return dt.format('Y-m-d H:M:S');
 }
+//
 // END SUB: Timestamp Normal
 
 // START SUB: Ping
+//
 function ping(host) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -76,9 +91,11 @@ function ping(host) {
 		exec("ping -c 5 "+host, puts);
 	}
 };
+//
 // END SUB: Ping
 
 // START SUB: System Shell
+//
 function shell(command) {
 	var sys = require('util');
 	var exec = require('child_process').exec;
@@ -94,9 +111,11 @@ function shell(command) {
 		exec(command, puts);
 	}
 };
+//
 // END SUB: Sytem Shell
 
 // START SUB: Prompt
+//
 function prompt(question, callback) {
 	var stdin = process.stdin,
 	stdout = process.stdout;
@@ -108,15 +127,19 @@ function prompt(question, callback) {
 		callback(data.toString().trim());
 	});
 }
+//
 // END SUB: Prompt
 
 // START SUB: Console Prompt
+//
 function botConsolePrompt() {
 	return bot_nickname.toLowerCase().yellow+'@localhost'.yellow+' ##_\ '.trap.bold.cyan;
 }
+//
 // END SUB: Console Prompt
 
 // START SUB: Console
+//
 function botConsole() {
 	prompt(timeStampLog()+botConsolePrompt(), function(botCommand) {
 		var arguments = botCommand.split(/(\s+)/);
@@ -144,9 +167,11 @@ function botConsole() {
 		}
 	})
 }
+//
 // END SUB: Console
 
 // START SUB: Web Server
+//
 function webServer(action) {
 	const web = express();
 	if (action.toUpperCase() == "START") {
@@ -170,6 +195,7 @@ function webServer(action) {
 		})
 	}
 }
+//
 // END SUB: Web Server
 
 
@@ -178,6 +204,7 @@ function webServer(action) {
 // START SECTION: DOCUMENTATION AUTOGEN
 
 // START SUB: Main Generator
+//
 function generateDocumentation() {
 	console.log(timeStampLog()+'Documentation generation beginning... please wait...'.yellow);
 	fs.readFile('alfred.js', 'utf8', function (err,data) {
@@ -185,15 +212,17 @@ function generateDocumentation() {
 		return console.log(timeStampLog()+err);
 		}
 		// START SUB SUB: Actual Processing into Markup
-		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION:/g, '#').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB:/g, '```').replace(/\/\/ END SUB: (.+)/g, '```');
+		var result = data.replace(/#!\/usr\/bin\/env node/g, '').replace(/\/\/ START SECTION: /g, '#').replace(/\/\/ END SECTION: (.+)/g, '').replace(/\/\/ START SUB: /g, '##').replace(/\/\/ END SUB: (.+)/g, '');
+		var result2 = result.replace(/\/\//g, '```').replace(/\/\/ COMMENT: /g,'###');
 		// END SUB SUB: Actual Processing into Markup
-		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
+		fs.writeFile('DOCS.md', result2, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
 	});
 	console.log(timeStampLog()+'Documentation generation done!'.bold.green);
 	botConsole();
 }
+//
 // END SUB: Main Generator
 
 // END SECTION: DOCUMENTATION AUTOGEN
@@ -201,6 +230,8 @@ function generateDocumentation() {
 // START SECTION: RUNTIME
 
 // START SUB: Initial Prompt and Console
+// COMMENT: 
+//
 if (fs.existsSync('operator')) {
 	var readStream = fs.createReadStream(path.join(__dirname, '/') + 'operator', 'utf8');
 	let data = ''
@@ -226,6 +257,7 @@ if (fs.existsSync('operator')) {
 		})
 	});
 }
+//
 // END SUB: Initial Prompt and Console
 
 // END SECTION: RUNTIME
