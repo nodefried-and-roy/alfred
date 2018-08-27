@@ -195,14 +195,14 @@ function generateDocumentation() {
 		if (err) {
 			return console.log(timeStampLog()+err);
 		}
-		var result1 = data.replace(/#!\/usr\/bin\/env node/g, 
+		var title = data.replace(/#!\/usr\/bin\/env node/g, 
 			'# Welcome to the '+bot_nickname+' Documentation');
-		var result2 = result1.replace(/\/\/ START SECTION: /g, '## ');
-		var result3 = result2.replace(/\/\/ END SECTION: (.+)/g, '');
-		var result4 = result3.replace(/\/\/ START SUB: /g, '### ');
-		var result5 = result4.replace(/\/\/ END SUB: (.+)/g, '');
-		var result6 = result5.replace(/\/\/ COMMENT: /g,'');
-		var result = result6.replace(/\/\```g, '```');
+		var h1 = title.replace(/\/\/ START SECTION: /g, '## ');
+		var h1end = h1.replace(/\/\/ END SECTION: (.+)/g, '');
+		var h2 = h1end.replace(/\/\/ START SUB: /g, '### ');
+		var h2end = h2.replace(/\/\/ END SUB: (.+)/g, '');
+		var comment = h2end.replace(/\/\/ COMMENT: /g,'');
+		var result = comment.replace(/\/\```g, '```');
 		fs.writeFile('DOCS.md', result, 'utf8', function (err) {
 			if (err) return console.log(timeStampLog()+err);
 		});
