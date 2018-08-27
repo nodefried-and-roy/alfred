@@ -82,7 +82,7 @@ function ping(host) {
 	} else {		
 		exec("ping -c 5 "+host, puts);
 	}
-};
+}
 ```
 
 
@@ -102,7 +102,7 @@ function shell(command) {
 	} else {		
 		exec(command, puts);
 	}
-};
+}
 ```
 
 
